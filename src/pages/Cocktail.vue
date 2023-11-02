@@ -11,7 +11,6 @@ const cocktail = ref(null)
 const cocktailId = computed(() => route.path.split("/").pop())
 
 const ingredients = computed(() => {
-  console.log(123)
   const ingredients = []
   for (let i = 1; i <= 15; i++){
     if (!cocktail.value[`strIngredient${i}`]) break
@@ -31,10 +30,6 @@ async function getCocktail(){
   }
 }
 
-function goBack(){
-  router.go(-1)
-}
-
 onBeforeMount(() => {
   getCocktail()
 })
@@ -43,7 +38,7 @@ onBeforeMount(() => {
 
 <template>
   <div v-if="cocktail" class="wrap">
-    <AppLayout :img-url="cocktail.strDrinkThumb" :back-func="goBack">
+    <AppLayout :img-url="cocktail.strDrinkThumb">
       <div class="wrapper">
         <div class="info">
           <div class="title">{{ cocktail.strDrink }}</div>
