@@ -30,6 +30,10 @@ async function getCocktail(){
   }
 }
 
+function goBack(){
+  router.go(-1)
+}
+
 onBeforeMount(() => {
   getCocktail()
 })
@@ -38,7 +42,7 @@ onBeforeMount(() => {
 
 <template>
   <div v-if="cocktail" class="wrap">
-    <AppLayout :img-url="cocktail.strDrinkThumb">
+    <AppLayout :img-url="cocktail.strDrinkThumb" :back-func="goBack">
       <div class="wrapper">
         <div class="info">
           <div class="title">{{ cocktail.strDrink }}</div>
